@@ -7,6 +7,7 @@ fi
 if [ -d ~/.zsh ]
 then
   echo "You already have a .zsh folder. Backing up to ~/.zsh.pre-oh-my-zsh"
+	
 	if [ -d ~/.zsh.pre-oh-my-zsh ]
 	then
 		echo "You already have a ~/.zsh.pre-oh-my-zsh folder. Please manually delete or move"
@@ -15,12 +16,12 @@ then
 
   mv ~/.zsh ~/.zsh.pre-oh-my-zsh 
  exit
-else
-	mkdir ~/.zsh
 fi
 
+mkdir ~/.zsh
+
 echo "Cloning Oh My Zsh..."
-/usr/bin/env git clone git://github.com/dmmalam/oh-my-zsh.git ~/.oh-my-zsh
+/usr/bin/env git clone git://github.com/dmmalam/oh-my-zsh.git ~/.zsh/oh-my-zsh
 
 echo "Looking for an existing zsh config..."
 if [ -f ~/.zshrc ] || [ -h ~/.zshrc ]
@@ -29,7 +30,7 @@ then
   mv ~/.zshrc ~/.zshrc.pre-oh-my-zsh;
 fi
 
-ln -s ~/.zsh/.oh-my-zsh/profile/.zshrc ~/.zshrc
+ln -s ~/.zsh/oh-my-zsh/profile/.zshrc ~/.zshrc
 
 echo "Copying your current PATH and adding it to the end of ~/.zshrc for you."
 echo "export PATH=$PATH" >> ~/.zsh/.zshrc

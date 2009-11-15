@@ -1,10 +1,13 @@
-## fixme - the load process here seems a bit bizarre
-
-setopt noautomenu
-setopt complete_in_word
-setopt always_to_end
-
-unsetopt flowcontrol
+# Completion
+setopt 	always_to_end		\
+		auto_list			\
+		auto_menu			\
+		auto_name_dirs		\
+		no_complete_aliases	\
+		complete_in_word	\
+		glob_complete		\
+		list_packed			\
+		no_list_rows_first	\
 
 WORDCHARS=''
 
@@ -25,7 +28,6 @@ zstyle ':completion:*' list-colors ''
 zstyle ':completion:*' hosts $( sed 's/[, ].*$//' $HOME/.ssh/known_hosts )
 
 unsetopt MENU_COMPLETE
-#setopt AUTO_MENU
 
 # should this be in keybindings?
 bindkey -M menuselect '^o' accept-and-infer-next-history

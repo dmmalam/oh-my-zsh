@@ -44,14 +44,46 @@ alias gcp='git cherry-pick'
 # Show history
 alias history='fc -l 1'
 
-# List direcory contents
-alias ls='ls -F'
-alias lsa='ls -lahG'
-alias l='ls -la'
-alias ll='ls -alr'
+# List directory contents
+alias ls='ls -FG'
+alias la='ls -lAG'
+alias l=ls
+alias ll='ls -@AFGhle'
 alias sl=ls # often screw this up
 
 alias sgem='sudo gem'
+
+# File Operations
+alias rm='rm -ivd'
+alias rmd='rm -ivr'
+
+alias cp='cp -vRpi'
+
+alias mv='mv -vi'
+
+alias chmod='chmos -v'
+
+alias df='df -ahi'
+
+alias ln='ln -iv'
+
+alias mkdir='mkdir -vp'
+alias md=mkdir
+alias rd=rmdir
+
+alias d='dirs -v'
+
+alias ps='ps -af'
+alias psa='ps -Af'
+
+# Execute previous command with sudo prefix:
+alias fu='sudo $( fc -ln -1)'
+
+# Darwinports specific
+if [ -x $(which port) ]; then
+    alias portup='sudo port -d selfupdate; sudo port -d upgrade installed'    
+fi
+
 
 # Find ruby file
 alias rfind='find . -name *.rb | xargs grep -n'
