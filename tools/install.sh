@@ -4,22 +4,35 @@ then
   exit
 fi
 
+if [ -d ~/.zsh ]
+then
+  echo "You already have a .zsh folder. Backing up to ~/.zsh.pre-oh-my-zsh"
+	if [ -d ~/.zsh.pre-oh-my-zsh ]
+	then
+		echo "You already have a ~/.zsh.pre-oh-my-zsh folder. Please manually delete or move"
+		exit
+	fi
+
+  mv ~/.zsh ~/.zsh.pre-oh-my-zsh 
+ exit
+else
+	mkdir ~/.zsh
+fi
+
 echo "Cloning Oh My Zsh..."
-/usr/bin/env git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
+/usr/bin/env git clone git://github.com/dmmalam/oh-my-zsh.git ~/.oh-my-zsh
 
 echo "Looking for an existing zsh config..."
 if [ -f ~/.zshrc ] || [ -h ~/.zshrc ]
 then
-  echo "Found ~/.zshrc. Backing up to ~/.zshrc.pre-oh-my-zsh";
-  cp ~/.zshrc ~/.zshrc.pre-oh-my-zsh;
-  rm ~/.zshrc;
+  echo "Found ~/.zshrc. Backing up to ~/.zshrc.pre-oh-my-zsh"
+  mv ~/.zshrc ~/.zshrc.pre-oh-my-zsh;
 fi
 
-echo "Using the Oh My Zsh template file and adding it to ~/.zshrc"
-cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
+ln -s ~/.zsh/.oh-my-zsh/profile/.zshrc ~/.zshrc
 
 echo "Copying your current PATH and adding it to the end of ~/.zshrc for you."
-echo "export PATH=$PATH" >> ~/.zshrc
+echo "export PATH=$PATH" >> ~/.zsh/.zshrc
 
 echo "Time to change your default shell to zsh!"
 chsh -s /bin/zsh
