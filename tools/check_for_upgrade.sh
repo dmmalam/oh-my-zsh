@@ -4,7 +4,7 @@ current_epoch=$(($(date +%s) / 60 / 60 / 24))
 
 if [ -f ~/.zsh/.zsh-update ]
 then
-  . ~/.zsh-update
+  . ~/.zsh/.zsh-update
   epoch_diff=$(($current_epoch - $LAST_EPOCH))
   if [ $epoch_diff -gt 6 ]
   then

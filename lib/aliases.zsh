@@ -80,9 +80,9 @@ alias psa='ps -Af'
 alias fu='sudo $( fc -ln -1)'
 
 # Darwinports specific
-if [ -x $(which port) ]; then
+#if [ -x $(which port) ]; then
     alias portup='sudo port -d selfupdate; sudo port -d upgrade installed'    
-fi
+#fi
 
 
 # Find ruby file
