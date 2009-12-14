@@ -5,8 +5,8 @@
     # set these associated aliases:
   	alias mmv='noglob zmv -W'   # user-friendly version of zmv
 
- # Distributed functions sorted by category:
- # uncomment the line if you want to use one of these.
+ 	# Distributed functions sorted by category:
+ 	# uncomment the line if you want to use one of these.
 
     # Misc 
         
@@ -15,7 +15,7 @@
     # MIME
         
         # autoload -U zsh-mime-handler 
-        # autoload -U zsh-mime-setup 
+         autoload -U zsh-mime-setup 
         # autoload -U allopt 
         # autoload -U checkmail 
         # autoload -U colors 
