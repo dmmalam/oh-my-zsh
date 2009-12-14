@@ -11,24 +11,26 @@
     # Misc 
         
         # autoload -U pick-web-browser 
+		  autoload -U nslookup
+		  autoload -U run-help
         
     # MIME
         
-        # autoload -U zsh-mime-handler 
+         autoload -U zsh-mime-handler 
          autoload -U zsh-mime-setup 
         # autoload -U allopt 
         # autoload -U checkmail 
-        # autoload -U colors 
-        # autoload -U getjobs 
+         autoload -U colors 
+         autoload -U getjobs 
         # autoload -U harden 
         # autoload -U is-at-least 
         # autoload -U mere 
         # autoload -U promptnl 
         # autoload -U relative 
         # autoload -U tetris 
-        # autoload -U zargs 
+         autoload -U zargs 
          autoload -U zcalc 
-        # autoload -U zed 
+         autoload -U zed 
         # autoload -U zkbd 
         # autoload -U zrecompile 
         # autoload -U zstyle+ 
@@ -130,7 +132,7 @@
         # autoload -U match-words-by-style 
         # autoload -U narrow-to-region 
         # autoload -U narrow-to-region-invisible 
-        # autoload -U predict-on 
+         autoload -U predict-on 
         # autoload -U quote-and-complete-word 
         # autoload -U read-from-minibuffer 
         # autoload -U replace-string 
@@ -156,6 +158,18 @@ function title {
 }
 
 function precmd {
+  vcs_info
+
+  if [ "${vcs_info_msg_0_}" = "" ]; then
+      dir_status="%F{2}→%f"
+  elif [[ $(git diff --cached --name-status 2>/dev/null ) != "" ]]; then
+      dir_status="%F{1}▶%f"
+  elif [[ $(git diff --name-status 2>/dev/null ) != "" ]]; then
+      dir_status="%F{3}▶%f"
+  else
+      dir_status="%F{2}▶%f"
+  fi
+
   title zsh "$PWD"
 }
 

@@ -6,7 +6,10 @@ zle -N self-insert url-quote-magic
 bindkey "^[m" copy-prev-shell-word
 
 ## jobs
-setopt long_list_jobs
+setopt 	long_list_jobs	\
+		auto_resume		\
+		notify			\
+		check_jobs
 
 ## pager
 export PAGER=less

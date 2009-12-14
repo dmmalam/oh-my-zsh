@@ -53,7 +53,7 @@ alias sl=ls # often screw this up
 alias sgem='sudo gem'
 
 # File Operations
-alias rm='rm -ivd'
+alias rm='rm -vd'
 alias rmd='rm -ivr'
 
 alias cp='cp -vRpi'
