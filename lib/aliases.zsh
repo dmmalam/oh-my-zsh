@@ -60,7 +60,7 @@ alias cp='cp -vRpi'
 
 alias mv='mv -vi'
 
-alias chmod='chmos -v'
+alias chmod='chmod -v'
 
 alias df='df -ahi'
 
