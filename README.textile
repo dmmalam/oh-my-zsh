@@ -4,12 +4,12 @@ bq. "OH MY ZSHELL!"
 
 h2. Differences from RobbyRussel
 * Install everything, including config and history files in ~/.zsh to avoid cluttering your home directory.
-* Installer backups up exisitng .zshrc if one exists, and restores on uninstall
+* Installer backups up existing .zshrc if one exists, and restores on uninstall
 * Installer will use MacPorts Zsh if installed
 * ~.zshrc is a symbolic link to a default .zshrc, which then sources a user custom ~/.zsh/zshrc.zsh
 * Plugin to use the 'most' pager
-* A bunch of alias and completion customisatins 
-
+* A bunch of alias and completion customisations 
+* Bindings for a MS Natural Keyboard 4000
 
 h2. Setup
 
