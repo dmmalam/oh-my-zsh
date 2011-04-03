@@ -13,11 +13,12 @@ then
 		mv  ~/.zsh.pre-oh-my-zsh ~/.zsh	
 fi
 
+rm ~/.zshrc;
+
 echo "Looking for an existing zsh config..."
 if [ -f ~/.zshrc.pre-oh-my-zsh ] || [ -h ~/.zshrc.pre-oh-my-zsh ]
 then
   echo "Found ~/.zshrc.pre-oh-my-zsh. Restoring...";
-  rm ~/.zshrc;
   cp ~/.zshrc.pre-oh-my-zsh ~/.zshrc;
   source ~/.zshrc;
 else
