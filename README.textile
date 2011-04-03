@@ -2,36 +2,46 @@ A handful of functions, auto-complete helpers, and stuff that makes you shout...
 
 bq. "OH MY ZSHELL!"
 
+h2. Differences from RobbyRussel
+* Install everything, including config and history files in ~/.zsh to avoid cluttering your home directory.
+* Installer backups up exisitng .zshrc if one exists, and restores on uninstall
+* Installer will use MacPorts Zsh if installed
+* ~.zshrc is a symbolic link to a default .zshrc, which then sources a user custom ~/.zsh/zshrc.zsh
+* Plugin to use the 'most' pager
+* A bunch of alias and completion customisatins 
+
+
 h2. Setup
 
 @oh-my-zsh@ should work with any recent release of "zsh":http://www.zsh.org/, the minimum recommended version is 4.3.9.
 
 h3. The automatic installer... (do you trust me?)
 
-@wget --no-check-certificate https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh@
+@wget --no-check-certificate https://github.com/dmmalam/oh-my-zsh/raw/master/tools/install.sh -O - | sh@
 
 h3. The manual way
 
 
-1. Clone the repository
+1. Make Oh My Zsh directory
+  @mkdir ~/.zsh@
 
-  @git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh@
+2. Clone the repository
+    @git clone git://github.com/dmmalam/oh-my-zsh.git ~/.zsh/oh-my-zsh@
 
-2. Create a new zsh config by copying the zsh template we've provided.
+3. Link default zshrc
+   @ln -s ~/.zsh/oh-my-zsh/profile/zshrc.zsh ~/.zshrc@
 
-  *NOTE*: If you already have a ~/.zshrc file, you should back it up. @cp ~/.zshrc ~/.zshrc.orig@ in case you want to go back to your original settings.
+4. Create a custom profile and edit as necessary
+   @echo "#User Zsh Profile" > ~/.zsh/zshrc.zsh@
 
-  @cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc@
-
-3. Set zsh as your default shell:
-
-  @chsh -s /bin/zsh@
+3. Set zsh as your default shell. Use MacPorts if necessary
+   @chsh -s /opt/local/bin/zsh@
 
 4. Start / restart zsh (open a new terminal is easy enough...)
 
 h3. Problems?
 
-You _might_ need to modify your PATH in ~/.zshrc if you're not able to find some commands after switching to _Oh My Zsh_.
+You _might_ need to modify your PATH in ~/.zsh/zshrc.zsh if you're not able to find some commands after switching to _Oh My Zsh_.
 
 h2. Usage
 
@@ -67,10 +77,7 @@ I'm far from being a zsh-expert and suspect there are many ways to improve. If y
 h3. Send us your theme!
 
 I'm hoping to collect a bunch of themes for our command prompts. You can see existing ones in the @themes/@ directory.
-<<<<<<< HEAD
 
 h3. Todo from imajes:
 
 * need to make the title bar support git folder
-=======
->>>>>>> 2497c57976b1e5002ebecd7ffa5c35bc87ada903
