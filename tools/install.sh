@@ -22,7 +22,7 @@ echo "Linking Oh My Zsh profile file..."
 ln -s ~/.zsh/oh-my-zsh/profile/zshrc.zsh ~/.zshrc
 
 echo "Creating user specific profile..."
-echo "User Zsh Profile" > ~/.zsh/zshrc.zsh
+echo "#User Zsh Profile" > ~/.zsh/zshrc.zsh
 
 echo "Appending current PATH to ~/.zsh/zshrc for you."
 echo "export PATH=$PATH" >> ~/.zsh/zshrc
