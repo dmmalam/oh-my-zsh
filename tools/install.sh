@@ -29,7 +29,7 @@ echo "export PATH=$PATH" >> ~/.zsh/zshrc.zsh
 
 echo "Changing default shell to zsh..."
 
-if [ -f /opt/local/bin/zsh]
+if [ -f /opt/local/bin/zsh ]
 then
     echo "Using MacPorts Zsh..."
     chsh -s /opt/local/bin/zsh
