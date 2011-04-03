@@ -1,21 +1,9 @@
-if [ -d ~/.oh-my-zsh ]
-then
-  echo "You already have Oh My Zsh installed. You'll need to remove ~/.oh-my-zsh if you want to install"
-  exit
-fi
+echo "Installing Oh My Zsh..."
 
 if [ -d ~/.zsh ]
 then
-  echo "You already have a .zsh folder. Backing up to ~/.zsh.pre-oh-my-zsh"
-	
-	if [ -d ~/.zsh.pre-oh-my-zsh ]
-	then
-		echo "You already have a ~/.zsh.pre-oh-my-zsh folder. Please manually delete or move"
-		exit
-	fi
-
-  mv ~/.zsh ~/.zsh.pre-oh-my-zsh 
- exit
+  echo "You already have Oh My Zsh installed. You'll need to remove ~/.zsh/.oh-my-zsh!"
+  exit
 fi
 
 mkdir ~/.zsh
@@ -30,14 +18,34 @@ then
   mv ~/.zshrc ~/.zshrc.pre-oh-my-zsh;
 fi
 
-ln -s ~/.zsh/oh-my-zsh/profile/.zshrc ~/.zshrc
+echo "Linking Oh My Zsh profile file..."
+ln -s ~/.zsh/oh-my-zsh/profile/zshrc.zsh ~/.zshrc
 
-echo "Copying your current PATH and adding it to the end of ~/.zshrc for you."
-echo "export PATH=$PATH" >> ~/.zsh/.zshrc
+echo "Creating user specific profile..."
+echo "User Zsh Profile" > ~/.zsh/zshrc.zsh
 
-echo "Time to change your default shell to zsh!"
-chsh -s /bin/zsh
+echo "Appending current PATH to ~/.zsh/zshrc for you."
+echo "export PATH=$PATH" >> ~/.zsh/zshrc
 
-echo "Hooray! Oh My Zsh has been installed."
-/bin/zsh
+echo "Changing default shell to zsh..."
+
+if [-f /opt/local/bin/zsh]
+then
+    echo "Using MacPorts Zsh..."
+    chsh -s /opt/local/bin/zsh
+else
+    echo "Using OSX Zsh..."
+    chsh -s /bin/zsh
+fi
+
+
+echo '         __                                     __  '
+echo '  ____  / /_     ____ ___  __  __   ____  _____/ /_ '
+echo ' / __ \/ __ \   / __ `__ \/ / / /  /_  / / ___/ __ \ '
+echo '/ /_/ / / / /  / / / / / / /_/ /    / /_(__  ) / / / '
+echo '\____/_/ /_/  /_/ /_/ /_/\__, /    /___/____/_/ /_/  '
+echo '                        /____/'
+
+echo "\n\n ....is now installed!"
+/usr/bin/env zsh
 source ~/.zshrc

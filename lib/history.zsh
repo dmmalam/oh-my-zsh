@@ -9,4 +9,6 @@ setopt	bang_hist				\
  		extended_history		\
  		hist_expire_dups_first	\
 		hist_ignore_dups		\
-		share_history		
+		share_history			\
+		hist_ignore_space		\
+		append_history

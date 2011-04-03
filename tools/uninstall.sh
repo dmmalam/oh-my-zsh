@@ -1,10 +1,17 @@
-echo "Uninstalling oh-my-zsh"
+echo "Uninstalling Oh My Zsh"
 
-#echo "Removing ~/.oh-my-zsh"
-#if [[ -d ~/.oh-my-zsh ]]
-#then
-#  rm -rf ~/.oh-my-zsh
-#fi
+echo "Removing ~/.oh-my-zsh"
+if [[ -d ~/.zsh ]]
+then
+  rm -rf ~/.zsh
+fi
+
+
+if [ -d ~/.zsh.pre-oh-my-zsh ]
+then
+	echo "Found ~/.zsh.pre-oh-my-zsh folder. Restroing..."
+		mv  ~/.zsh.pre-oh-my-zsh ~/.zsh	
+fi
 
 echo "Looking for an existing zsh config..."
 if [ -f ~/.zshrc.pre-oh-my-zsh ] || [ -h ~/.zshrc.pre-oh-my-zsh ]
@@ -19,4 +26,4 @@ else
   source /etc/profile
 fi
 
-echo "Thanks for trying out Oh My Zsh. It's been uninstalled."
+echo "Oh My Zsh has been uninstalled."

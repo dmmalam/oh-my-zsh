@@ -42,3 +42,13 @@ cd () {
     builtin cd "$@"
   fi
 }
+
+alias mkdir='mkdir -vp'
+alias md=mkdir
+alias rd=rmdir
+alias d='dirs -v'
+
+# mkdir & cd to it
+function mcd() { 
+  mkdir -p "$1" && cd "$1"; 
+}

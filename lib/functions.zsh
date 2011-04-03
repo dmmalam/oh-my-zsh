@@ -1,3 +1,4 @@
+
 # Functions
 
     autoload -U zmv 
@@ -144,41 +145,6 @@
         # autoload -U url-quote-magic 
         # autoload -U zed-set-file-name
 
-
-function title {
-  if [[ $TERM == "screen" ]]; then
-    # Use these two for GNU Screen:
-    print -nR $'\033k'$1$'\033'\\\
-
-    print -nR $'\033]0;'$2$'\a'
-  elif [[ $TERM == "xterm" || $TERM == "rxvt" ]]; then
-    # Use this one instead for XTerms:
-    print -nR $'\033]0;'$*$'\a'
-  fi
-}
-
-function precmd {
-  vcs_info
-
-  if [ "${vcs_info_msg_0_}" = "" ]; then
-      dir_status="%F{2}→%f"
-  elif [[ $(git diff --cached --name-status 2>/dev/null ) != "" ]]; then
-      dir_status="%F{1}▶%f"
-  elif [[ $(git diff --name-status 2>/dev/null ) != "" ]]; then
-      dir_status="%F{3}▶%f"
-  else
-      dir_status="%F{2}▶%f"
-  fi
-
-  title zsh "$PWD"
-}
-
-function preexec {
-  emulate -L zsh
-  local -a cmd; cmd=(${(z)1})
-  title $cmd[1]:t "$cmd[2,-1]"
-}
-
 function remote_console() {
   /usr/bin/env ssh $1 "( cd $2 && ruby script/console production )"
 }
@@ -195,24 +161,43 @@ function upgrade_oh_my_zsh() {
   /bin/sh $ZSH/tools/upgrade.sh
 }
 
-function tab() {
-  osascript 2>/dev/null <<EOF
-    tell application "System Events"
-      tell process "Terminal" to keystroke "t" using command down
-    end
-    tell application "Terminal"
-      activate
-      do script with command "cd $PWD; $*" in window 1
-    end tell
-EOF
-}
-
 function take() {
   mkdir -p $1
   cd $1
 }
 
-function tm() {
-  cd $1
-  mate $1
+function extract() {
+    unset REMOVE_ARCHIVE
+    
+    if test "$1" = "-r"; then
+        REMOVE=1
+        shift
+    fi
+  if [[ -f $1 ]]; then
+    case $1 in
+      *.tar.bz2) tar xvjf $1;;
+      *.tar.gz) tar xvzf $1;;
+      *.tar.xz) tar xvJf $1;;
+      *.tar.lzma) tar --lzma -xvf $1;;
+      *.bz2) bunzip $1;;
+      *.rar) unrar $1;;
+      *.gz) gunzip $1;;
+      *.tar) tar xvf $1;;
+      *.tbz2) tar xvjf $1;;
+      *.tgz) tar xvzf $1;;
+      *.zip) unzip $1;;
+      *.Z) uncompress $1;;
+      *.7z) 7z x $1;;
+      *) echo "'$1' cannot be extracted via >extract<";;
+    esac
+
+    if [[ $REMOVE_ARCHIVE -eq 1 ]]; then
+        echo removing "$1";
+        /bin/rm "$1";
+    fi
+
+  else
+    echo "'$1' is not a valid file"
+  fi
 }
+

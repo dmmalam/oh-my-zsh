@@ -5,18 +5,18 @@ function _current_epoch() {
 }
 
 function _update_zsh_update() {
-  echo "LAST_EPOCH=$(_current_epoch)" > ~/.zsh-update
+  echo "LAST_EPOCH=$(_current_epoch)" > ~/.zsh/.zsh-update
 }
 
-if [ -f ~/.zsh-update ]
+if [ -f ~/.zsh/.zsh-update ]
 then
-  . ~/.zsh-update
+  . ~/.zsh/.zsh-update
 
   if [[ -z "$LAST_EPOCH" ]]; then
     _update_zsh_update && return 0;
   fi
 
-  epoch_diff=$((${_current_epoch} - $LAST_EPOCH))
+  epoch_diff=$(($(_current_epoch) - $LAST_EPOCH))
   if [ $epoch_diff -gt 6 ]
   then
     echo "[Oh My Zsh] Would you like to check for updates?"
