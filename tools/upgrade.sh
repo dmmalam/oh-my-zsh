@@ -9,4 +9,3 @@ echo '\____/_/ /_/  /_/ /_/ /_/\__, /    /___/____/_/ /_/  '
 echo '                        /____/'
 echo "Hooray! Oh My Zsh has been updated and/or is at the current version. \nAny new updates will be reflected when you start your next terminal session."
 cd $current_path
-source $ZSH/profile/zshrc.zsh
