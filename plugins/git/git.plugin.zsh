@@ -1,4 +1,5 @@
 # Aliases
+alias git ='nocorrect git'
 alias g='git'
 alias gst='git status'
 alias gl='git pull'

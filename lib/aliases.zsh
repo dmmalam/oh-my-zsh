@@ -23,6 +23,7 @@ alias sl=ls # often screw this up
 
 # File Operations
 alias rm='rm -vd'
+
 alias rmd='rm -ivr'
 
 alias cp='cp -vRpi'
