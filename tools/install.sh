@@ -25,11 +25,11 @@ echo "Creating user specific profile..."
 echo "#User Zsh Profile" > ~/.zsh/zshrc.zsh
 
 echo "Appending current PATH to ~/.zsh/zshrc for you."
-echo "export PATH=$PATH" >> ~/.zsh/zshrc
+echo "export PATH=$PATH" >> ~/.zsh/zshrc.zsh
 
 echo "Changing default shell to zsh..."
 
-if [-f /opt/local/bin/zsh]
+if [ -f /opt/local/bin/zsh]
 then
     echo "Using MacPorts Zsh..."
     chsh -s /opt/local/bin/zsh
