@@ -49,3 +49,6 @@ alias x=extract
 
 # Syntax highlighting less
 alias vless=/usr/share/vim/vim72/macros/less.sh
+
+# Make which return all instances
+alias which='which -a'
