@@ -21,7 +21,7 @@ source ~/.zsh/zshrc.zsh
 
 # Which plugins would you like to load? (plugins can be found in $ZSH/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(bundler cap gem git github lighthouse macports most mysql-macports natural-4000 osx perl rails3 ruby rvn svn textmate)
+plugins=(bundler cap gem git github lighthouse macports most mysql-macports natural-4000 osx perl rails3 ruby rvm svn textmate)
 
 source $ZSH/oh-my-zsh.zsh
 
