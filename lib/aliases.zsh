@@ -46,3 +46,6 @@ alias fu='sudo $( fc -ln -1)'
 alias afind='ack-grep -il'
 
 alias x=extract
+
+# Syntax highlighting less
+alias vless=/usr/share/vim/vim72/macros/less.sh
